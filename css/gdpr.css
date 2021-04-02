@@ -1,0 +1,31 @@
+#gdpr_consent {
+    width: 50%;
+    height: 80%;
+    position: fixed;
+    z-index: 10000;
+    background-color: rgb(231, 231, 231);
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 2rem;
+    
+}
+
+.disabled {
+    display: none;
+}
+
+.c_partners {
+    height: 50%;
+    overflow-y: scroll;
+}
+
+.wrapper{
+    -webkit-filter: blur(6px);
+    -ms-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    filter: blur(6px);
+} 
+

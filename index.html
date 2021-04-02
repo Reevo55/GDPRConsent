@@ -17,10 +17,22 @@
     />
 
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/gdpr.css" />
+    <script type="module" src="./build/src/index.js" defer></script>
+
+    <div id="gdpr_consent">
+        <h1 class="c_title">GDPR Consent</h1>
+        <p class="c_description">When you visit this site, this site and our partners use cookies and other methods to process your personal information in order to customize your experience.</p>
+        <h3 class="c_title__partners">Partners</h3>
+        <ul class="c_partners"></ul>
+        <button class="c_reject"> REJECT </button>
+        <button class="c_accept"> ACCEPT </button>
+    </div>
+
   </head>
 
   <body>
-    <main>
+    <main id="main" class="wrapper">
       <section class="section-startup">
         <div id="stars"></div>
         <div id="stars2"></div>
@@ -264,5 +276,6 @@
         </div>
       </section>
     </main>
+
   </body>
 </html>
