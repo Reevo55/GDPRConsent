@@ -26,7 +26,6 @@ export class Partner {
       } else {
         this.accepted = true;
       }
-      console.log(`Current state ${this.accepted}`);
     };
 
     a.textContent = this.name;

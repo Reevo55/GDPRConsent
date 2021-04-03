@@ -1,7 +1,6 @@
 export function isCookie(cookie_name) {
     var name = cookie_name + "=";
     var found = document.cookie.search(name);
-    console.log(found);
     if (found !== -1) {
         return true;
     }

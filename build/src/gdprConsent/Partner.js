@@ -20,7 +20,6 @@ var Partner = /** @class */ (function () {
             else {
                 _this.accepted = true;
             }
-            console.log("Current state " + _this.accepted);
         };
         a.textContent = this.name;
         li.appendChild(a);

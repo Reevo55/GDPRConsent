@@ -7,7 +7,7 @@ export async function fetchPartners(): Promise<Partner[]> {
     "https://optad360.mgr.consensu.org/cmp/v2/vendor-list.json",
   ).then((res) => res.json());
 
-  const vendorsLength = Object.keys(data.vendors).length;
+  const vendorsLength: number = Object.keys(data.vendors).length;
 
   for (let i = 0; i < vendorsLength; i++) {
     if (data.vendors[i] !== undefined) {

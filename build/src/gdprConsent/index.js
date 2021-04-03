@@ -6,4 +6,4 @@ function getConsent() {
         gdpr();
     }
 }
-//# sourceMappingURL=get-consent.js.map
+//# sourceMappingURL=index.js.map
