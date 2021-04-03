@@ -7,11 +7,11 @@ var Partner = /** @class */ (function () {
     }
     Partner.prototype.createDOMNode = function () {
         var _this = this;
-        var li = document.createElement('li');
-        var a = document.createElement('a');
+        var li = document.createElement("li");
+        var a = document.createElement("a");
         a.href = this.policyUrl;
-        var button = document.createElement('input');
-        button.type = 'checkbox';
+        var button = document.createElement("input");
+        button.type = "checkbox";
         button.checked = true;
         button.onclick = function () {
             if (_this.accepted) {

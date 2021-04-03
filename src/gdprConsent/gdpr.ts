@@ -1,52 +1,45 @@
-import { Partner } from './Partner.js';
-import { fetchPartners } from './fetchPartners.js';
+import { Partner } from "./Partner.js";
+import { fetchPartners } from "./fetch-partners.js";
+import { setCookie } from "./cookies.js";
+import { insertPopup, disableConsentPopup } from "./handle-popup.js";
 
-const gdprConsent = document.querySelector("#gdpr_consent");
-
-const main = document.querySelector("#main");
-
-const reject = gdprConsent?.querySelector(".c_reject");
-const accept = gdprConsent?.querySelector(".c_accept");
-
-let partnersArr: Partner[];
 const EXPIRATION_NUM_OF_DAYS = 1;
 
-export async function gdpr() {
-    const partners = gdprConsent?.querySelector(".c_partners")
+const reject = document.querySelector(".c_reject");
+const accept = document.querySelector(".c_accept");
 
-    partnersArr = await fetchPartners();
+let partnersArr: Partner[];
 
-    partnersArr.map(partner =>
-        partners?.append(partner.createDOMNode())
-    );
+export async function gdpr(): Promise<void> {
+  insertPopup();
 
-    console.log('Hello');
+  const gdprConsent = document.querySelector("#gdpr_consent");
+  const partners = gdprConsent?.querySelector(".c_partners");
+
+  const main = document.querySelector("#main");
+
+  document.body.style.overflow = "hidden";
+  main?.classList.add("wrapper");
+
+  partnersArr = await fetchPartners();
+  console.log(partnersArr);
+  partnersArr.map((partner) => partners?.append(partner.createDOMNode()));
 }
 
 reject?.addEventListener("click", () => {
-    disableConsentPopup();
-    console.log('cookiess')
-    setCookie('consent', 'false', EXPIRATION_NUM_OF_DAYS);
-})
+  disableConsentPopup();
+  console.log("cookiess");
+  setCookie("consent", "false", EXPIRATION_NUM_OF_DAYS);
+});
 
 accept?.addEventListener("click", () => {
-    disableConsentPopup();
-
-    const cookiePartner = "true; vendors=[" + partnersArr.map(partner => partner.accepted ? partner.id : null).filter(val => val != null).join("|") + "]";
-    
-    setCookie('consent', cookiePartner, EXPIRATION_NUM_OF_DAYS);
-    console.log('COOKIESSSS')
-})
-
-function setCookie(c_name: string, c_value: string, exdays: number): void {
-    var exdate=new Date();
-    exdate.setDate(exdate.getDate() + exdays);
-    document.cookie=encodeURIComponent(c_name) 
-      + "=" + c_value
-      + (!exdays ? "" : "; expires=" + exdate.toUTCString());;
-}
-
-function disableConsentPopup(): void {
-    gdprConsent?.classList.add("disabled");
-    main?.classList.remove("wrapper")
-}
+  disableConsentPopup();
+  const cookiePartner =
+    "true & vendors=[" +
+    partnersArr
+      .map((partner) => (partner.accepted ? partner.id : null))
+      .filter((val) => val != null)
+      .join("|") +
+    "]";
+  setCookie("consent", cookiePartner, EXPIRATION_NUM_OF_DAYS);
+});

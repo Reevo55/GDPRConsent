@@ -34,48 +34,27 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { fetchPartners } from "./fetch-partners.js";
-import { setCookie } from "./cookies.js";
-import { insertPopup, disableConsentPopup } from "./handle-popup.js";
-var EXPIRATION_NUM_OF_DAYS = 1;
-var reject = document.querySelector(".c_reject");
-var accept = document.querySelector(".c_accept");
-var partnersArr;
-export function gdpr() {
+import { Partner } from "./Partner.js";
+export function fetchPartners() {
     return __awaiter(this, void 0, void 0, function () {
-        var gdprConsent, partners, main;
+        var partners, data, vendorsLength, i, newPartner;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    insertPopup();
-                    gdprConsent = document.querySelector("#gdpr_consent");
-                    partners = gdprConsent === null || gdprConsent === void 0 ? void 0 : gdprConsent.querySelector(".c_partners");
-                    main = document.querySelector("#main");
-                    document.body.style.overflow = "hidden";
-                    main === null || main === void 0 ? void 0 : main.classList.add("wrapper");
-                    return [4 /*yield*/, fetchPartners()];
+                    partners = [];
+                    return [4 /*yield*/, fetch("https://optad360.mgr.consensu.org/cmp/v2/vendor-list.json").then(function (res) { return res.json(); })];
                 case 1:
-                    partnersArr = _a.sent();
-                    console.log(partnersArr);
-                    partnersArr.map(function (partner) { return partners === null || partners === void 0 ? void 0 : partners.append(partner.createDOMNode()); });
-                    return [2 /*return*/];
+                    data = _a.sent();
+                    vendorsLength = Object.keys(data.vendors).length;
+                    for (i = 0; i < vendorsLength; i++) {
+                        if (data.vendors[i] !== undefined) {
+                            newPartner = new Partner(data.vendors[i].id, data.vendors[i].name, data.vendors[i].policyUrl);
+                            partners.push(newPartner);
+                        }
+                    }
+                    return [2 /*return*/, partners];
             }
         });
     });
 }
-reject === null || reject === void 0 ? void 0 : reject.addEventListener("click", function () {
-    disableConsentPopup();
-    console.log("cookiess");
-    setCookie("consent", "false", EXPIRATION_NUM_OF_DAYS);
-});
-accept === null || accept === void 0 ? void 0 : accept.addEventListener("click", function () {
-    disableConsentPopup();
-    var cookiePartner = "true & vendors=[" +
-        partnersArr
-            .map(function (partner) { return (partner.accepted ? partner.id : null); })
-            .filter(function (val) { return val != null; })
-            .join("|") +
-        "]";
-    setCookie("consent", cookiePartner, EXPIRATION_NUM_OF_DAYS);
-});
-//# sourceMappingURL=gdpr.js.map
+//# sourceMappingURL=fetch-partners.js.map

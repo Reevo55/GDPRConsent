@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200;300;400;500;600;700&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200;300;400;500;600;700&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
+    rel="stylesheet"
     />
     <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
-      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
-      crossorigin="anonymous"
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+    crossorigin="anonymous"
     />
-
+    
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/gdpr.css" />
-    <script type="module" src="./build/src/index.js" defer></script>
-
-    <div id="gdpr_consent">
-        <h1 class="c_title">GDPR Consent</h1>
-        <p class="c_description">When you visit this site, this site and our partners use cookies and other methods to process your personal information in order to customize your experience.</p>
-        <h3 class="c_title__partners">Partners</h3>
-        <ul class="c_partners"></ul>
-        <button class="c_reject"> REJECT </button>
-        <button class="c_accept"> ACCEPT </button>
-    </div>
-
+    
+    <script type="module" src="./build/src/gdprConsent/get-consent.js" defer></script>
   </head>
-
+  
   <body>
-    <main id="main" class="wrapper">
+    <main id="main">
       <section class="section-startup">
         <div id="stars"></div>
         <div id="stars2"></div>
