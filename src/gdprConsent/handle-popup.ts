@@ -2,8 +2,8 @@ export function insertPopup(): void {
   let popup: string = `
     <div id="gdpr_consent">
     <div class="c_container">
-      <img src="./img/gdpr-flag.jpg" alt="gdpr-flag" class="gdpr_flag">
-      <img src="./img/logo-n.svg" alt="logo optad360" class="c_image">
+      <img src="./assets/images/gdpr-consent/gdpr-flag.jpg" alt="gdpr-flag" class="gdpr_flag">
+      <img src="./assets/images/gdpr-consent/logo-n.svg" alt="logo optad360" class="c_image">
       <h1 class="c_title">GDPR Consent</h1>
       <p class="c_description">When you visit this site, this site and our partners use cookies and other methods to process your personal information in order to customize your experience. Please click "I agree" to accept usage of your data, you can select our partners who will be permitted aswell.</p>
       <div class="c_policies">

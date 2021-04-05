@@ -20,11 +20,14 @@
     "eslint-plugin-react": "^7.23.1",
     "eslint-plugin-standard": "^5.0.0",
     "prettier": "^2.2.1",
-    "tslint": "^6.1.3"
+    "tslint": "^6.1.3",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
   },
   "scripts": {
     "compile:ts": "npx tsc -w -p .\\tsconfig.json",
-    "lint": "eslint -c './.eslintrc' --fix './src/**/*.ts'"
+    "lint": "eslint -c './.eslintrc' --fix './src/**/*.ts'",
+    "build:webpack": "webpack"
   },
   "author": "Radek",
   "license": "ISC"
