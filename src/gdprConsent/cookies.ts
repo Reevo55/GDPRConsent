@@ -1,5 +1,5 @@
-export function isCookie(cookie_name: string): boolean {
-  let name: string = cookie_name + "=";
+export function isCookie(cookieName: string): boolean {
+  let name: string = cookieName + "=";
   let found: number = document.cookie.search(name);
 
   if (found !== -1) {
@@ -9,12 +9,12 @@ export function isCookie(cookie_name: string): boolean {
   }
 }
 
-export function setCookie(c_name: string, c_value: string, exdays: number): void {
+export function setCookie(cookieName: string, cookieValue: string, exdays: number): void {
   var exdate: Date = new Date();
   exdate.setDate(exdate.getDate() + exdays);
   document.cookie =
-    encodeURIComponent(c_name) +
+    encodeURIComponent(cookieName) +
     "=" +
-    c_value +
+    cookieValue +
     (!exdays ? "" : "; expires=" + exdate.toUTCString());
 }

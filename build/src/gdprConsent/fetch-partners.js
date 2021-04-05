@@ -35,14 +35,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { Partner } from "./Partner.js";
-export function fetchPartners() {
+export function fetchPartners(partners_url) {
     return __awaiter(this, void 0, void 0, function () {
         var partners, data, vendorsLength, i, newPartner;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     partners = [];
-                    return [4 /*yield*/, fetch("https://optad360.mgr.consensu.org/cmp/v2/vendor-list.json").then(function (res) { return res.json(); })];
+                    return [4 /*yield*/, fetch(partners_url).then(function (res) { return res.json(); })];
                 case 1:
                     data = _a.sent();
                     vendorsLength = Object.keys(data.vendors).length;

@@ -1,5 +1,5 @@
-export function isCookie(cookie_name) {
-    var name = cookie_name + "=";
+export function isCookie(cookieName) {
+    var name = cookieName + "=";
     var found = document.cookie.search(name);
     if (found !== -1) {
         return true;
@@ -8,13 +8,13 @@ export function isCookie(cookie_name) {
         return false;
     }
 }
-export function setCookie(c_name, c_value, exdays) {
+export function setCookie(cookieName, cookieValue, exdays) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + exdays);
     document.cookie =
-        encodeURIComponent(c_name) +
+        encodeURIComponent(cookieName) +
             "=" +
-            c_value +
+            cookieValue +
             (!exdays ? "" : "; expires=" + exdate.toUTCString());
 }
 //# sourceMappingURL=cookies.js.map

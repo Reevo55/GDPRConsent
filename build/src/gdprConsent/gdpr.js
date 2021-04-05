@@ -38,6 +38,8 @@ import { fetchPartners } from "./fetch-partners.js";
 import { setCookie } from "./cookies.js";
 import { insertPopup, disableConsentPopup } from "./handle-popup.js";
 var EXPIRATION_NUM_OF_DAYS = 1;
+var PARTNERS_URL = "https://optad360.mgr.consensu.org/cmp/v2/vendor-list.json";
+var COOKIE_NAME = "consent";
 var partnersArr;
 export function gdpr() {
     return __awaiter(this, void 0, void 0, function () {
@@ -52,7 +54,7 @@ export function gdpr() {
                     main = document.querySelector("#main");
                     document.body.style.overflow = "hidden";
                     main === null || main === void 0 ? void 0 : main.classList.add("wrapper");
-                    return [4 /*yield*/, fetchPartners()];
+                    return [4 /*yield*/, fetchPartners(PARTNERS_URL)];
                 case 1:
                     partnersArr = _a.sent();
                     partnersArr.map(function (partner) { return partners === null || partners === void 0 ? void 0 : partners.append(partner.createDOMNode()); });
@@ -62,21 +64,22 @@ export function gdpr() {
     });
 }
 function setEventListeners() {
-    var reject = document.querySelector(".c_reject");
-    var accept = document.querySelector(".c_accept");
+    var gdprConsent = document.querySelector("#gdpr_consent");
+    var reject = gdprConsent === null || gdprConsent === void 0 ? void 0 : gdprConsent.querySelector(".c_reject");
+    var accept = gdprConsent === null || gdprConsent === void 0 ? void 0 : gdprConsent.querySelector(".c_accept");
     reject === null || reject === void 0 ? void 0 : reject.addEventListener("click", function () {
         disableConsentPopup();
-        setCookie("consent", "false", EXPIRATION_NUM_OF_DAYS);
+        setCookie(COOKIE_NAME, "false", EXPIRATION_NUM_OF_DAYS);
     });
     accept === null || accept === void 0 ? void 0 : accept.addEventListener("click", function () {
         disableConsentPopup();
-        var cookiePartner = "true & vendors=[" +
+        var cookiePartner = "true & partners=[" +
             partnersArr
                 .map(function (partner) { return (partner.accepted ? partner.id : null); })
                 .filter(function (val) { return val != null; })
                 .join("|") +
             "]";
-        setCookie("consent", cookiePartner, EXPIRATION_NUM_OF_DAYS);
+        setCookie(COOKIE_NAME, cookiePartner, EXPIRATION_NUM_OF_DAYS);
     });
 }
 //# sourceMappingURL=gdpr.js.map

@@ -1,11 +1,9 @@
 import { Partner } from "./Partner.js";
 
-export async function fetchPartners(): Promise<Partner[]> {
+export async function fetchPartners(partners_url: string): Promise<Partner[]> {
   let partners: Partner[] = [];
 
-  const data = await fetch(
-    "https://optad360.mgr.consensu.org/cmp/v2/vendor-list.json",
-  ).then((res) => res.json());
+  const data = await fetch(partners_url).then((res) => res.json());
 
   const vendorsLength: number = Object.keys(data.vendors).length;
 
